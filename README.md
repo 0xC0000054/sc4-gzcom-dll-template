@@ -19,7 +19,15 @@ Further information on the design of the GZCOM framework can be found on the [gz
 
 1. Open the solution in the `src` folder
 2. Set the `kExampleDirectorID` constant in `ExampleDllDirector.cpp` to a randomly generated 32-bit number.
-3. Update the post build events to copy the build output to you SimCity 4 application plugins folder.
+    
+    The GZCOM framework requires the director ids, message ids, etc. to be unique. To enforce this the template
+    creates a compiler error by setting the `kExampleDirectorID` to `<>`.
+
+    You will need to replace the `<>` value with a randomly generated number. The random number is typically
+    written as an 8 character [hexadecimal](https://en.wikipedia.org/wiki/Hexadecimal) number in the form `0xAABBCCDD`,
+    the `0x` prefix is used in C++ to indicate that the number is using the hexadecimal format.
+
+3. Update the [post build events](https://learn.microsoft.com/en-us/cpp/build/specifying-build-events?view=msvc-170) to copy the build output to you SimCity 4 application plugins folder.
 4. Build the solution
 
 ## Debugging the plugin
